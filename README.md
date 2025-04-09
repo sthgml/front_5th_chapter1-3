@@ -23,9 +23,9 @@
 - [x] useRef 구현 완료
 - [x] useMemo 구현 완료
 - [x] useCallback 구현 완료
-- [ ] memo 구현 완료
-- [ ] deepMemo 구현 완료
-- [ ] useDeepMemo 구현 완료
+- [x] memo 구현 완료
+- [x] deepMemo 구현 완료
+- [x] useDeepMemo 구현 완료
 
 ### 심화 과제
 
