@@ -1,11 +1,6 @@
-import { createContext, ReactNode, useContext, useState } from "react";
-import { Notification, NotificationContextType } from "../types";
-
-export const NotificationContext = createContext<NotificationContextType>({
-  notifications: [],
-  addNotification: () => {},
-  removeNotification: () => {},
-});
+import { ReactNode, useState } from "react";
+import { NotificationContextType, Notification } from "../../types";
+import { NotificationContext } from "../NotificationContext";
 
 type Props = {
   children: ReactNode;
@@ -41,5 +36,3 @@ export const NotificationProvider = ({ children }: Props) => {
     </NotificationContext.Provider>
   );
 };
-
-export const useNotificationContext = () => useContext(NotificationContext);
