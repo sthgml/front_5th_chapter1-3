@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react";
+
 // 타입 정의
 export interface Item {
   id: number;
@@ -19,13 +21,22 @@ export interface Notification {
 }
 
 // AppContext 타입 정의
-export interface AppContextType {
+export interface ThemeContextType {
   theme: string;
   toggleTheme: () => void;
+}
+
+export interface LoginContextType {
   user: User | null;
-  login: (email: string, password: string) => void;
-  logout: () => void;
+  setUser: Dispatch<SetStateAction<User | null>>;
+}
+
+export interface NotificationContextType {
   notifications: Notification[];
   addNotification: (message: string, type: Notification["type"]) => void;
   removeNotification: (id: number) => void;
 }
+export type AppContextType =
+  | ThemeContextType
+  | LoginContextType
+  | NotificationContextType;

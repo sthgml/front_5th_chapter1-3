@@ -1,16 +1,21 @@
 import { useState } from "react";
-import { useAppContext } from "../contexts/AppContext";
-import { Item } from "../types";
-import { renderLog } from "../utils";
+import { useThemeContext } from "../contexts/ThemeContext";
+import { generateItems, renderLog } from "../utils";
 
 // ItemList 컴포넌트
-const ItemList: React.FC<{
-  items: Item[];
-  onAddItemsClick: () => void;
-}> = ({ items, onAddItemsClick }) => {
+const ItemList: React.FC = () => {
   renderLog("ItemList rendered");
+
+  const [items, setItems] = useState(() => generateItems(1000));
+  const addItems = () => {
+    setItems((prevItems) => [
+      ...prevItems,
+      ...generateItems(1000, prevItems.length),
+    ]);
+  };
+
   const [filter, setFilter] = useState("");
-  const { theme } = useAppContext();
+  const { theme } = useThemeContext();
 
   const filteredItems = items.filter(
     (item) =>
@@ -29,7 +34,7 @@ const ItemList: React.FC<{
           <button
             type="button"
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-xs"
-            onClick={onAddItemsClick}
+            onClick={addItems}
           >
             대량추가
           </button>
